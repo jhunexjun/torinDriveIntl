@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return phpinfo();
-});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/showSurveyFormSection1', 'ElevatorSurveyFormController@showSurveyFormSection1');
+Route::post('/surveyFormSection11Save', 'ElevatorSurveyFormController@surveyFormSection11Save');
+
+Route::get('/test', 'testController@index');

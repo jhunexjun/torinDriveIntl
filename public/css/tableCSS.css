@@ -1,0 +1,26 @@
+/* Housekeeping */
+/* Looks like nothing is changed. */
+html{
+    font:0.75em/1.5 sans-serif;
+    color:#333;
+    background-color:#fff;
+    padding:1em;
+}
+
+/* Tables */
+#exceltable {
+    width:100%;
+    margin-bottom:1em;
+    border-collapse: collapse;
+}
+
+th {
+    font-weight:bold;
+    background-color:#ddd;
+}
+
+th,
+td{
+    padding:0.3em;
+    border:1px solid #ccc;
+}
