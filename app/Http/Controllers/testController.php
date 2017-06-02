@@ -12,13 +12,13 @@ class testController extends Controller
 {
     public function index() {
 
-    	Storage::disk('local')->put('file.txt', 'Contents');
+    	/*Storage::disk('local')->put('file.txt', 'Contents');
     	$contents = Storage::get('file.txt');
 
     	$string = str_random(20);
 
     	Storage::copy('quotation.xlsx', "quotation_$string.xlsx");
-    	return;
+    	return;*/
 
     	// return phpinfo();
 
@@ -53,9 +53,21 @@ class testController extends Controller
 			});
 	    });*/
 
-	    Excel::load('/tmp/QuotationCopy.xlsx', function($doc) {
+	    /*Excel::load('/tmp/testCalc.xlsx', function($doc) {
 		    $sheet = $doc->setActiveSheetIndex(0);
-		    $sheet->setCellValue('B18', '450');
-		})->download('xlsx');
+		    $sheet->setCellValue('B1', '450');
+		})->store('xlsx');*/
+
+		Excel::load('/tmp/testCalc.xlsx', function($doc) {
+		    $sheet = $doc->setActiveSheetIndex(0);
+		    $sheet->setCellValue('B1', '145');
+		})->store('xlsx');
+
+		Excel::load(storage_path('exports') . '/testCalc.xlsx', function($doc) {
+	        // $sheet = $doc->getSheetByName('data'); // sheet with name data, but you can also use sheet indexes.
+	        $sheet = $doc->getSheetByName('Sheet1');
+	        $cellData = $sheet->getCell('C1')->getCalculatedValue();
+	        echo $cellData;
+	    });
     }
 }

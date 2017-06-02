@@ -4,19 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Fpdf;
+
+class PDF extends Fpdf
+{
+	function Header()
+	{
+	    // Logo
+	    $this->Image(storage_path() . 'logo.png',10,6,30);
+	    // Arial bold 15
+	    $this->SetFont('Arial','B',15);
+	    // Move to the right
+	    $this->Cell(80);
+	    // Title
+	    $this->Cell(30,10,'Title',1,0,'C');
+	    // Line break
+	    $this->Ln(20);
+	}
+
+	// Page footer
+	function Footer()
+	{
+	    // Position at 1.5 cm from bottom
+	    $this->SetY(-15);
+	    // Arial italic 8
+	    $this->SetFont('Arial','I',8);
+	    // Page number
+	    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+	}
+}
+
 class ElevatorSurveyFormController extends Controller
 {
-    public function __construct() {
-
-    }
-
     /* http://subinsb.com/set-same-cookie-on-different-domains */
 
-    public function showSurveyFormSection1() {
-    	return view('surveyFormSection11');
+    public function generateImmediatePreliminaryQuote() {
+    	return view('generateImmediatePreliminaryQuote');
     }
 
-    public function surveyFormSection11Save() {
-    	return view('surveyFormSection11SaveResponse');
+    public function quoteOutput() {
+    	$pdf = new PDF();
+		$pdf::AliasNbPages();
+		$pdf::AddPage();
+		$pdf::SetFont('Times','',12);
+
+		for ($i=1; $i<=40; $i++)
+		    $pdf::Cell(0,10,'Printing line number '.$i,0,1);
+
+		$pdf::Output();
+		exit();
+    	// return view('quoteOutput');
     }
 }

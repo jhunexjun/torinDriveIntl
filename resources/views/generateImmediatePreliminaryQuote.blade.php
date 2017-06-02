@@ -22,7 +22,7 @@
             Email to: sales@torindriveintl.com
         </div>
         <div class="col-md-4"></div>
-        <div class="col-md-4">Date of survey: <span>5/31/2017</span></div>
+        <div class="col-md-4">Date of survey: <span id="dateOfSurvey">5/31/2017</span></div>
     </div>
     <div class="row">
         <div class="col-md-4"></div>
@@ -30,11 +30,11 @@
         <div class="col-md-4">Customer Name: <span>XYZ Enterprises</span></div>
     </div>
     <div class="row">
-        <div class="col-md-4">PROJECT NAME</div>
+        <div class="col-md-4">PROJECT NAME <input type="text" name="projectName"></div>
         <div class="col-md-4"></div>
     </div>
     <div class="row">
-        <div class="col-md-4">CONSULTANT NAME</div>
+        <div class="col-md-4">CONSULTANT NAME <input type="text" name="consultantName"></div>
         <div class="col-md-4"></div>
     </div>
     <div class="row">

@@ -18,7 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/showSurveyFormSection1', 'ElevatorSurveyFormController@showSurveyFormSection1');
-Route::post('/surveyFormSection11Save', 'ElevatorSurveyFormController@surveyFormSection11Save');
+Route::get('/generateImmediatePreliminaryQuote', 'ElevatorSurveyFormController@generateImmediatePreliminaryQuote');
+Route::post('/quoteOutput', 'ElevatorSurveyFormController@quoteOutput');
 
 Route::get('/test', 'testController@index');
+
+Route::get('/fpdf', 'ElevatorSurveyFormController@quoteOutput');
